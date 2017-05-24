@@ -1,0 +1,127 @@
+<!DOCTYPE html>  
+<html>	
+<head>	
+<title>	
+Creat html by Bat	 
+</title>	
+</head>	
+<body>	
+para 1:  <br>	
+<a href="http://www.beautifullover.org" target="_blank">	
+beautifullover </a>	
+</br>	
+<a href="https://github.com/littleflute/BlCDs/issues/519" target="_blank">	
+issue519 </a>	
+<div id="curSong" style="border:1px solid green;"></div>	
+<p id="demo" style="border:1px solid red;"></p>		
+<br> <div id='song1'>01 Duncan _ Brady.mp3</div>	
+<button id = "1" onclick="me.play(this)">1:01 Duncan _ Brady.mp3</button> 
+<button id = "2" onclick="me.play(this)">2:02 Cold Irons Bound[Live].mp3</button> 
+<button id = "3" onclick="me.play(this)">3:03 Track 3.mp3</button> 
+<button id = "4" onclick="me.play(this)">4:04 Track 4.mp3</button> 
+<button id = "5" onclick="me.play(this)">5:05 Mississippi [Unreleased Version 3].mp3</button> 
+<button id = "6" onclick="me.play(this)">6:06 Most of the Time [#][Alternate Version 2].mp3</button> 
+<button id = "7" onclick="me.play(this)">7:07 Track 7.mp3</button> 
+<button id = "8" onclick="me.play(this)">8:08 Track 8.mp3</button> 
+<button id = "9" onclick="me.play(this)">9:09 Ring Them Bells [Alternate Version].mp3</button> 
+<button id = "10" onclick="me.play(this)">10:10 Things Have Changed[Live].mp3</button> 
+<br> 
+<button id = "11" onclick="me.play(this)">11:11 Track 11.mp3</button> 
+<button id = "12" onclick="me.play(this)">12:12 Track 12.mp3</button> 
+<br><audio id="mp3Player" controls> 	
+	<source src="01 Owner of a Lonely Heart.mp3" type="audio/mpeg">	
+Your browser does not supoort hte audio element	
+</audio>		
+<div id="timerShow" style="border:1px solid blue;"></div>	
+<button onclick="me.playId(1)">test</button>	
+<script>								
+	var xmlhttp = new XMLHttpRequest();				
+	xmlhttp.onreadystatechange = function() {				
+   	if(this.readyState == 4 && this.status == 200) {		
+       		var myObj = JSON.parse(this.responseText); 		
+       		document.getElementById("demo").innerHTML = myObj.songNum;	
+   	}								
+	};		
+	xmlhttp.open("GET", "https://littleflute.github.io/Elton-John/l.json", true);	
+	xmlhttp.send();							
+//*---------------------------------				
+function mp3Engine(ver){						
+   this.v 		= ver;						
+   this.p 		= document.getElementById("mp3Player");		
+   this.p.nTime	= 0;						
+this.p.boss	= this;						
+   this.p.btn  	= document.createElement("button");		
+   this.p.btn.innerHTML	= "+";					
+   this.p.btn.boss	= this.p;					
+   document.body.appendChild(this.p.btn);				
+   var v = this.p.view  	= document.createElement("div");	
+   v.style.border 		= "1px blue solid";			
+   v.style.display   	= "none";				
+   v.id			= "playerView";				
+   document.body.appendChild(this.p.view);				
+   this.p.btn.onclick	= function(){				
+       if(this.innerHTML=="+"){					
+          this.innerHTML="-";					
+          this.boss.view.style.display="block";			
+       }								
+       else if(this.innerHTML=="-"){				
+          this.innerHTML="+";					
+          this.boss.view.style.display="none";			
+       }								
+   }								
+   this.setVolume 	= function(v){					
+        this.p.volume = v;						
+   }								
+   this.setLyricFile = function(filePath){				 
+       var t 	= document.getElementById("playerView"); 	
+       var divLyr 	= document.createElement("div"); 		
+       divLyr.id	= "divLyrID";			 		
+       divLyr.src 	= filePath; 					
+       divLyr.style.border = "1px red solid"; 			
+       divLyr.update	= function(c,d){			
+           var s	= divLyr.src + ":" + c + "/" + d;		
+           divLyr.innerHTML = s;					
+       } 								
+        t.appendChild(divLyr); 					
+       divLyr.update(0,0);						
+   }								
+   this. playId = function (id){					
+     var b = document.getElementById(id);				 
+     if(b==null) b = document.getElementById("1");			
+     this.play(b);							
+   }								
+    this.oldBtn = null;						
+    this.play	= function (o){					
+        if(this.oldBtn) {						
+            this.oldBtn.style.backgroundColor = "green";}		
+	     var p = document.getElementById("mp3Player");		
+        var s = o.innerHTML; 					
+        s = s.split(":");						
+	     p.src = s[1];						
+	     p.play();							
+	     var s = document.getElementById("curSong");		
+	     if(s) s.innerHTML = p.src;					
+        o.style.backgroundColor="yellow";				
+        this.oldBtn = o;						
+    }								
+    this.myTimeFun = function(){	 				
+       var t = document.getElementById("timerShow");		
+       var p = document.getElementById("mp3Player"); 		
+       var lr = document.getElementById("divLyrID");		
+       lr.update(p.currentTime,p.duration);			
+       p.nTime++;							
+    var s = p.nTime + ": " + p.currentTime + "/" + p.duration;	 
+       t.innerHTML = s;						
+    if(p.ended) p.boss.playId(parseInt(p.boss.oldBtn.id)+1);	
+   }								
+   setInterval(this.myTimeFun, 1000);				
+   this.setVolume(0.2);						
+   this.setLyricFile("xdLrc.lrc");						
+   document.title = this.v;					
+}									
+//*==================================				
+var me = new mp3Engine("v0.8.8");					 
+//*/	
+</script>							
+</body>	
+</html>	
