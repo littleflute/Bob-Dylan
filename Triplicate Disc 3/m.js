@@ -1,0 +1,12 @@
+var f = [];				
+f[0]	= "v0.0.8";			
+f[1]	= "01 Day in, Day Out.mp3";		
+f[2]	= "02 I Couldn't Sleep a Wink Last Night.mp3";		
+f[3]	= "03 Sentimental Journey.mp3";		
+f[4]	= "04 Somewhere Along the Way.mp3";		
+f[5]	= "05 When the World Was Young.mp3";		
+f[6]	= "06 These Foolish Things.mp3";		
+f[7]	= "07 You Go to My Head.mp3";		
+f[8]	= "08 Stardust.mp3";		
+f[9]	= "09 It's Funny to Everyone But Me.mp3";		
+f[10]	= "10 Why Was I Born.mp3";		
