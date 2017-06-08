@@ -1,0 +1,12 @@
+var f = [];				
+f[0]	= "v0.0.8";			
+f[1]	= "01 I Guess I'll Have to Change My Plans.mp3";		
+f[2]	= "02 September of My Years.mp3";		
+f[3]	= "03 I Could Have Told You.mp3";		
+f[4]	= "04 Once Upon a Time.mp3";		
+f[5]	= "05 Stormy Weather.mp3";		
+f[6]	= "06 This Nearly Was Mine.mp3";		
+f[7]	= "07 That Old Feeling.mp3";		
+f[8]	= "08 It Gets Lonely Early.mp3";		
+f[9]	= "09 My One and Only Love.mp3";		
+f[10]	= "10 Trade Winds.mp3";		
