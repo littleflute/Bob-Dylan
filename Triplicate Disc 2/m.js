@@ -1,0 +1,12 @@
+var f = [];				
+f[0]	= "v0.0.8";			
+f[1]	= "01 Braggin'.mp3";		
+f[2]	= "02 As Time Goes By.mp3";		
+f[3]	= "03 Imagination.mp3";		
+f[4]	= "04 How Deep Is the Ocean.mp3";		
+f[5]	= "05 P.S. I Love You.mp3";		
+f[6]	= "06 The Best Is Yet to Come.mp3";		
+f[7]	= "07 But Beautiful.mp3";		
+f[8]	= "08 Here's That Rainy Day.mp3";		
+f[9]	= "09 Where Is the One.mp3";		
+f[10]	= "10 There's a Flaw in My Flue.mp3";		
